@@ -36,9 +36,10 @@ export const AuthContextProvider = ({ children }) => {
         navigate("/login");
         return;
       }
-      console.log(exp);
       dispatch({ type: "LOGIN", payload: user });
     }
+
+    //eslint-disable-next-line
   }, []);
 
   return (

@@ -47,3 +47,28 @@ export const signUp = async (credentials, navigate) => {
     console.log(err);
   }
 };
+
+export const addTask = async (task, setTask, setAllTasks) => {
+  const accessToken = JSON.parse(localStorage.getItem("access-token"));
+  try {
+    const response = await axios.post(
+      `${BASE_URL}/task`,
+      { ...task },
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      }
+    );
+    setTask({
+      title: "",
+      description: "",
+    });
+    setAllTasks((prevTask) => {
+      return [...prevTask, response.data];
+    });
+    console.log(response);
+  } catch (err) {
+    console.log(err);
+  }
+};
