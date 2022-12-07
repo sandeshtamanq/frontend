@@ -3,7 +3,6 @@ import axios from "axios";
 export const BASE_URL = "http://localhost:3000";
 
 export const getAllTask = async (setAllTasks) => {
-  console.log("first");
   const accessToken = JSON.parse(localStorage.getItem("access-token"));
   try {
     const res = await axios.get(`${BASE_URL}/task`, {

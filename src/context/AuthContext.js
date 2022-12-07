@@ -1,5 +1,6 @@
+import jwtDecode from "jwt-decode";
 import { createContext, useReducer, useEffect } from "react";
-
+import { useNavigate } from "react-router-dom";
 export const AuthContext = createContext();
 
 export const authReducer = (state, action) => {
@@ -21,11 +22,21 @@ export const AuthContextProvider = ({ children }) => {
     isLoggedIn: false,
   });
 
+  const navigate = useNavigate();
   useEffect(() => {
     const token = JSON.parse(localStorage.getItem("access-token"));
     const user = JSON.parse(localStorage.getItem("user"));
 
     if (token && user) {
+      const { exp } = jwtDecode(token);
+      const currentDate = Date.now() / 1000;
+
+      if (currentDate > exp) {
+        localStorage.clear();
+        navigate("/login");
+        return;
+      }
+      console.log(exp);
       dispatch({ type: "LOGIN", payload: user });
     }
   }, []);
