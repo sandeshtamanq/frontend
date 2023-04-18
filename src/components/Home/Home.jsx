@@ -15,7 +15,6 @@ const Home = () => {
     description: "",
   });
 
-  console.log(allTasks);
   useEffect(() => {
     setCurrentUser(JSON.parse(localStorage.getItem("user")));
     getAllTask(setAllTasks);
