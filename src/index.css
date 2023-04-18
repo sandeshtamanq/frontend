@@ -4,7 +4,8 @@
 
 @layer base {
   [type="text"],
-  [type="password"] {
+  [type="password"],
+  [type="email"] {
     @apply px-2 border-2 border-gray-400 rounded-md w-full py-1;
   }
 }

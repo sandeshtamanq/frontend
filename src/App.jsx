@@ -9,18 +9,9 @@ function App() {
   return (
     <>
       <Routes>
-        <Route
-          path="/"
-          element={isLoggedIn ? <Home /> : <Navigate to="/login" />}
-        />
-        <Route
-          path="/login"
-          element={!isLoggedIn ? <SignIn /> : <Navigate to="/" />}
-        />
-        <Route
-          path="/signup"
-          element={!isLoggedIn ? <SignUp /> : <Navigate to="/" />}
-        />
+        <Route path="/" element={isLoggedIn ? <Home /> : <Navigate to="/login" />} />
+        <Route path="/login" element={!isLoggedIn ? <SignIn /> : <Navigate to="/" />} />
+        <Route path="/signup" element={!isLoggedIn ? <SignUp /> : <Navigate to="/" />} />
       </Routes>
     </>
   );
